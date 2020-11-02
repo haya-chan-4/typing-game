@@ -2,7 +2,7 @@
 
 {
   function setWord() {
-    word = words.splice(Math.floor(Math.random() * words.length), 1)[0];
+    word = words.splice(Math.floor(Math.random() * words.length), 1)[0]; //この[0]って何？
     target.textContent = word;
     location = 0;
   }
@@ -22,10 +22,11 @@
       return;
     }
     isPlaying = true;
-    startTime =Date.now();
+    startTime = Date.now();
     setWord();
   });
 
+  // 引数(e)の扱い方？？意味？？
   document.addEventListener('keydown',(e) => {
     if(e.key !== word[location]){
       return;
@@ -38,7 +39,7 @@
     if (location === word.length) {
       if(words.length === 0) {
         const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
-        const result =document.getElementById('result');
+        const result = document.getElementById('result');
         result.textContent = `finished ${elapsedTime} seconds`;
         return;
       }
